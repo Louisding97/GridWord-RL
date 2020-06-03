@@ -13,12 +13,28 @@ enum Way
 
 class Environment
 {
-private:
+public:
+
 	int m_player_x = 0;
 	int m_player_y = 0;
 
-public:
-	int map[Y_SIZE][X_SIZE];
+
+	int map[Y_SIZE][X_SIZE];  //map 에는 reward 가 있다'
+	
+	Environment()
+	{
+		for (int y = 0; y < Y_SIZE; y++)
+		{
+			for (int x = 0; x < X_SIZE; x++)
+			{
+				map[y][x] = 0;
+			}
+		}
+		
+		map[Y_SIZE-1][X_SIZE-1] = 3;
+		map[Y_SIZE - 1][X_SIZE - 2] = -2;
+		
+	}
 	bool verificationOfLocation()
 	{
 		if (m_player_y < Y_SIZE && m_player_y >= 0)
@@ -30,7 +46,8 @@ public:
 		}
 		return false;
 	}
-	void move(const int way)
+	
+	int move(const int way)
 	{
 		try
 		{
@@ -45,7 +62,7 @@ public:
 			}
 			else if (way == RIGHT)
 			{
-				m_player_x--;
+				m_player_x++;
 			}
 			else if (way == LEFT)
 			{
@@ -54,14 +71,23 @@ public:
 
 			if (verificationOfLocation())
 			{
-				throw - 1;
+				throw -1;
 			}
 		}
 		catch (int e)
 		{
-			throw - 1;
+			return -1;
 		}
 
+	}
+	void input(const int way)
+	{
+		int code = move(way);
+	}
+
+	int getReward()
+	{
+		return map[m_player_y][m_player_x];
 	}
 };
 
