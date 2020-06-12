@@ -148,10 +148,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MiroRL.cpp" />
+    <ClCompile Include="Miro.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MiroRL.h" />
+    <ClInclude Include="Ai.h" />
+    <ClInclude Include="Miro.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

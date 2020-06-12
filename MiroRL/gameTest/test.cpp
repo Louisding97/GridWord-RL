@@ -1,10 +1,11 @@
 #include "pch.h"
-#include "../MiroRL/MiroRL.h"
+
+#include "../MiroRL/Miro.h"
 
 
 TEST(MiroTest, Move) {
 
-    Environment* e1 = new Environment();
+    Miro* e1 = new Miro();
     e1->move(UP);
     e1->move(UP);
     e1->move(UP);
@@ -17,12 +18,11 @@ TEST(MiroTest, Move) {
 
 TEST(MiroTest, getReward)
 {
-    Environment* e = new Environment();
+    Miro* e = new Miro();
     e->move(UP);
     e->move(RIGHT);
     e->move(RIGHT);
     EXPECT_EQ(e->getReward(), 3);
     e->move(LEFT);
     EXPECT_EQ(e->getReward(), -2);
-
 }
