@@ -1,5 +1,13 @@
 ﻿#include "Miro.h"
 
+
+#include <iostream>
+
+
+
+#include <windows.h>
+
+
 Miro::Miro()
 {
 	for (int y = 0; y < Y_SIZE; y++)
@@ -60,14 +68,33 @@ int Miro::move(const int way)
 	}
 }
 
-void Miro::input(const int way)
-{
-	int code = move(way);
-}
+
 
 int Miro::render()
 {
-	input();
+	while (1)
+	{
+		for (int i = Y_SIZE-1; i >= 0; i--)
+		{
+			for (int j = 0; j < 3; j++)
+			{
+					std::cout << map[i][j] ;
+			}
+			std::cout << std::endl;
+		}
+		
+		int res = move(agent1->outWay());
+		agent1->reward(getReward());
+
+		if (res == -1)
+		{
+			break;
+		}
+
+		Sleep(1000);
+		system("cls");
+	}
+	return 0;
 }
 
 

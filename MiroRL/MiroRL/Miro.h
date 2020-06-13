@@ -1,16 +1,7 @@
 #pragma once
-#define X_SIZE 3
-#define Y_SIZE 2
 
 #include "Ai.h"
-enum Way
-{
-	UP,
-	DOWN,
-	RIGHT,
-	LEFT
-};
-
+#include "Tool.h"
 
 class Miro
 {
@@ -30,7 +21,6 @@ public:
 
 	int move(const int way);
 
-	void input(const int way);
 
 	int render();
 	
@@ -38,19 +28,3 @@ public:
 };
 
 
-class Method
-{
-public:
-	double m_way[4];
-};
-
-class AI
-{
-public:
-	Method m_state[Y_SIZE][X_SIZE];
-
-	Method state(const int x, const int y)
-	{
-		return m_state[y][x];
-	}
-};

@@ -147,12 +147,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Ai.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Miro.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ai.h" />
     <ClInclude Include="Miro.h" />
+    <ClInclude Include="Tool.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
