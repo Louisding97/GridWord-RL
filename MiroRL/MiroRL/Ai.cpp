@@ -7,15 +7,17 @@
 Ai::Ai()
 {
 
-	std::srand(std::time(NULL));
 	
 	
 }
 
 int Ai::outWay()
 {
-	action = RIGHT;
+
+	std::srand(std::time(NULL));
 	action = rand() % 4;		//·£´ýÁ¤Ã¥
+
+
 	return action;
 }
 
@@ -25,9 +27,11 @@ void Ai::CalCulationReward(double r, const int x, const int y)
 	
 	XY* oldP = Positon::old(new XY(x, y), action);
 
-	Method& m = state(oldP);
+	Method cu = m_state[y][x];
 
-	double st = (r + MAX4(m.m_way[UP], m.m_way[DOWN], m.m_way[RIGHT], m.m_way[LEFT])) * 0.9;
+	double st = (r + MAX4(cu.m_way[UP], cu.m_way[DOWN], cu.m_way[RIGHT], cu.m_way[LEFT]));
+
+	Method& m = state(oldP);
 	m.m_way[action] = st;
 
 

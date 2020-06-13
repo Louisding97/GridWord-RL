@@ -39,7 +39,6 @@ bool Miro::verificationOfLocation()
 
 int Miro::move(const int way)
 {
-	std::cout << way << std::endl;
 	try
 	{
 		if (way == UP)
