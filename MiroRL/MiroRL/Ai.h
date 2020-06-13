@@ -2,10 +2,19 @@
 
 #include "Tool.h"
 
+
 class Method
 {
 public:
+
 	double m_way[4];
+	Method()
+	{
+		for(int i = 0; i < 4; i++)
+		{
+			m_way[i] = 0;
+		}
+	}
 };
 
 
@@ -23,5 +32,5 @@ public:
 
 	void CalCulationReward(double r, const int x, const int y);
 
-	Method state(const int x, const int y);
+	Method& state(XY* p);
 };

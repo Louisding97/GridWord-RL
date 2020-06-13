@@ -5,10 +5,15 @@ int main()
 {
 	Ai* ai = new Ai();
 
-	
-	Miro* e1 = new Miro(ai);
 
-	e1->render();
+	for (int i = 0; i < 200; i++) 
+	{
+		Miro* e1 = new Miro(ai);
+
+		e1->render();
+	}
+
+	ai->m_state;
 	
 
 }

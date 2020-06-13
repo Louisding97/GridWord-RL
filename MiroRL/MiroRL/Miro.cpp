@@ -19,8 +19,8 @@ Miro::Miro(Ai *agent)
 		}
 	}
 
-	map[Y_SIZE - 1][X_SIZE - 1] = 3;
-	map[Y_SIZE - 1][X_SIZE - 2] = -2;
+	map[Y_SIZE - 1][X_SIZE - 1] = -2;
+	map[Y_SIZE - 2][X_SIZE - 1] = 3;
 
 	agent = new Ai();
 }
@@ -29,7 +29,7 @@ bool Miro::verificationOfLocation()
 {
 	if (m_player_y < Y_SIZE && m_player_y >= 0)
 	{
-		if (m_player_x < Y_SIZE && m_player_x >= 0)
+		if (m_player_x < X_SIZE && m_player_x >= 0)
 		{
 			return true;
 		}
@@ -39,7 +39,7 @@ bool Miro::verificationOfLocation()
 
 int Miro::move(const int way)
 {
-	std::cout << way;
+	std::cout << way << std::endl;
 	try
 	{
 		if (way == UP)
@@ -63,11 +63,17 @@ int Miro::move(const int way)
 		{
 			throw -1;
 		}
+		// reward 가 있다면
+		if(map[m_player_y][m_player_x] != 0)
+		{
+			return map[m_player_y][m_player_x];
+		}
 	}
 	catch (int e)
 	{
-		return -1;
+		return e;
 	}
+	return 0;
 }
 
 
@@ -76,32 +82,37 @@ int Miro::render()
 {
 	while (1)
 	{
-		for (int i = Y_SIZE-1; i >= 0; i--)
+		/*for (int i = Y_SIZE-1; i >= 0; i--)
 		{
 			for (int j = 0; j < 3; j++)
 			{
 					std::cout << map[i][j] ;
 			}
 			std::cout << std::endl;
-		}
+		}*/
 		
 		int res = move(agent->outWay());
-		if (res == -1)	//out of map
+		
+		agent->CalCulationReward(getReward(), m_player_x, m_player_y);
+		
+		if (res != 0)	//out of map or get reward
 		{
-			agent->CalCulationReward(-1 , m_player_x, m_player_y);
 			return 0;
 		}
 		
-		agent->CalCulationReward(getReward(), m_player_x, m_player_y);
 
-		
+		/*
 		Sleep(3000); 
-		system("cls");
+		system("cls");*/
 	}
 }
 
 
 int Miro::getReward()
 {
+	if(!verificationOfLocation())
+	{
+		return -1;
+	}
 	return map[m_player_y][m_player_x];
 }
