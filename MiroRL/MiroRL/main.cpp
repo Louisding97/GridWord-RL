@@ -1,12 +1,9 @@
 
 #include "Miro.h"
-#include "Ai.h"
+
 int main()
 {
-	Ai* ai = new Ai();
-
-	
-	Miro* e1 = new Miro(ai);
+	Miro* e1 = new Miro();
 
 	e1->render();
 	
