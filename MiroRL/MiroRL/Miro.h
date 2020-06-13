@@ -10,12 +10,12 @@ public:
 	int m_player_x = 0;
 	int m_player_y = 0;
 
-	Ai* agent1;
+	Ai* agent;
 
 
 	int map[Y_SIZE][X_SIZE];  //map 에는 reward 가 있다'
 
-	Miro();
+	Miro(Ai* agent);
 
 	bool verificationOfLocation();
 
