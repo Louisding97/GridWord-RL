@@ -13,12 +13,15 @@ class Ai
 {
 public:
 	Method m_state[Y_SIZE][X_SIZE];
+	double reward;
+	int action;
+
 	
 	Ai();
 
 	int outWay();
 
-	void reward(int r);
+	void CalCulationReward(double r, const int x, const int y);
 
 	Method state(const int x, const int y);
 };

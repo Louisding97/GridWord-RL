@@ -8,8 +8,9 @@
 #include <windows.h>
 
 
-Miro::Miro()
+Miro::Miro(Ai *agent)
 {
+	this->agent = agent;
 	for (int y = 0; y < Y_SIZE; y++)
 	{
 		for (int x = 0; x < X_SIZE; x++)
@@ -21,7 +22,7 @@ Miro::Miro()
 	map[Y_SIZE - 1][X_SIZE - 1] = 3;
 	map[Y_SIZE - 1][X_SIZE - 2] = -2;
 
-	agent1 = new Ai();
+	agent = new Ai();
 }
 
 bool Miro::verificationOfLocation()
@@ -38,6 +39,7 @@ bool Miro::verificationOfLocation()
 
 int Miro::move(const int way)
 {
+	std::cout << way;
 	try
 	{
 		if (way == UP)
@@ -57,7 +59,7 @@ int Miro::move(const int way)
 			m_player_x--;
 		}
 
-		if (verificationOfLocation())
+		if (!verificationOfLocation())
 		{
 			throw -1;
 		}
@@ -83,18 +85,19 @@ int Miro::render()
 			std::cout << std::endl;
 		}
 		
-		int res = move(agent1->outWay());
-		agent1->reward(getReward());
-
-		if (res == -1)
+		int res = move(agent->outWay());
+		if (res == -1)	//out of map
 		{
-			break;
+			agent->CalCulationReward(-1 , m_player_x, m_player_y);
+			return 0;
 		}
+		
+		agent->CalCulationReward(getReward(), m_player_x, m_player_y);
 
-		Sleep(1000);
+		
+		Sleep(3000); 
 		system("cls");
 	}
-	return 0;
 }
 
 
