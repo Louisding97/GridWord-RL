@@ -7,11 +7,13 @@ int main()
 	Ai* ai = new Ai();
 
 
-	for (int i = 0; i < 100000; i++) 
+	for (int i = 0; i < 30; i++) 
 	{
+		ai->reward = 0;
 		Miro* e1 = new Miro(ai);
 
 		e1->render();
+		std::cout << "bye" << std::endl;
 	}
 
 	ai->m_state;
@@ -28,6 +30,7 @@ int main()
 			
 			std::cout<< std::endl;
 		}
+		std::cout << std::endl;
 	}
 	
 

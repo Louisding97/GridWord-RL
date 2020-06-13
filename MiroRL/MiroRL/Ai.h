@@ -21,6 +21,7 @@ public:
 class Ai
 {
 public:
+	int count;
 	Method m_state[Y_SIZE][X_SIZE];
 	double reward;
 	int action;

@@ -20,7 +20,7 @@ Miro::Miro(Ai *agent)
 	}
 
 	map[Y_SIZE - 1][X_SIZE - 1] = -2;
-	map[Y_SIZE - 2][X_SIZE - 1] = 3;
+	map[Y_SIZE - 1][X_SIZE - 2] = 3;
 
 	agent = new Ai();
 }
