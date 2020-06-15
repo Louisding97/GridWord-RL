@@ -19,9 +19,8 @@ int Ai::outWay(XY* p)
 	double Frand = std::rand() / (double)RAND_MAX;
 	if(Frand < epsilon)
 	{
-		std::srand(std::time(NULL));
-		action = rand() % 4;		//랜덤정책
-		reward -= 0.1;		//한턴에 리워드 -0.1
+		action = std::rand() % 4;		//랜덤정책
+		
 		
 	}
 	else

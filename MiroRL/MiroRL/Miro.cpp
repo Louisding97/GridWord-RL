@@ -38,6 +38,8 @@ bool Miro::verificationOfLocation()
 
 int Miro::move(const int way)
 {
+	int old_x = m_player_x;
+	int old_y = m_player_y;
 	try
 	{
 		if (way == UP)
@@ -59,6 +61,8 @@ int Miro::move(const int way)
 
 		if (!verificationOfLocation())
 		{
+			m_player_x = old_x;
+			m_player_y = old_y;
 			throw -1;
 		}
 		// reward 가 있다면
@@ -80,28 +84,20 @@ int Miro::render()
 {
 	while (1)
 	{
-		/*for (int i = Y_SIZE-1; i >= 0; i--)
+		int res;
+		do
 		{
-			for (int j = 0; j < 3; j++)
-			{
-					std::cout << map[i][j] ;
-			}
-			std::cout << std::endl;
-		}*/
-		
-		int res = move(agent->outWay(new XY(m_player_x,m_player_x)));
+			res = move(agent->outWay(new XY(m_player_x, m_player_x)));
+		} while (res == -1);
+		agent->reward -= 0.1;		//한턴에 리워드 -0.1
 		
 		agent->CalCulationReward(getReward(), m_player_x, m_player_y);
+
 		
 		if (res != 0)	//out of map or get reward
 		{
 			return 0;
 		}
-		
-
-		/*
-		Sleep(3000); 
-		system("cls");*/
 	}
 }
 
