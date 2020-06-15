@@ -1,3 +1,3 @@
 # RL
 
-![res](img/res.png)
+![res](res.png)
