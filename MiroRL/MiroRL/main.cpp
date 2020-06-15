@@ -7,7 +7,7 @@ int main()
 	Ai* ai = new Ai(true);
 
 
-	for (int i = 0; i <100; i++) 
+	for (int i = 0; i <10000; i++) 
 	{
 		ai->reward = 0;
 		Miro* e1 = new Miro(ai);
