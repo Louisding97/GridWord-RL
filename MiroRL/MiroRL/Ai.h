@@ -21,17 +21,21 @@ public:
 class Ai
 {
 public:
+
+	bool m_Rand_policy;
 	int count;
 	Method m_state[Y_SIZE][X_SIZE];
 	double reward;
 	int action;
-
+	double epsilon;
 	
-	Ai();
+	Ai(bool randPolicy);
 
-	int outWay();
+	int outWay(XY* p);
 
 	void CalCulationReward(double r, const int x, const int y);
 
 	Method& state(XY* p);
+
+	void setRandomPolicy(bool rp);
 };

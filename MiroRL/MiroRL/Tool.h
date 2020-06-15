@@ -8,6 +8,8 @@
 #define MAX3(a,b,c)	(MAX2(MAX2(a,b),(c)))
 #define MAX4(a,b,c,d)	(MAX2(MAX3(a,b,c),(d)))
 
+
+
 enum Way
 {
 	UP,
@@ -15,6 +17,7 @@ enum Way
 	RIGHT,
 	LEFT
 };
+
 
 class XY
 {

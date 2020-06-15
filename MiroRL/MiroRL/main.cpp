@@ -4,19 +4,19 @@
 #include <iostream>
 int main()
 {
-	Ai* ai = new Ai();
+	Ai* ai = new Ai(true);
 
 
-	for (int i = 0; i < 30; i++) 
+	for (int i = 0; i <100000; i++) 
 	{
 		ai->reward = 0;
 		Miro* e1 = new Miro(ai);
-
+		
 		e1->render();
-		std::cout << "bye" << std::endl;
+		ai->epsilon -= 0.0001;
+		//std::cout << "bye" << std::endl;
 	}
 
-	ai->m_state;
 	for(int i = 0; i < Y_SIZE; i++)
 	{
 		for(int j = 0; j < X_SIZE; j++)
@@ -32,6 +32,7 @@ int main()
 		}
 		std::cout << std::endl;
 	}
-	
+	std::cout << "----------------------------------------" << std::endl;
 
+	std::cout << ai->epsilon;
 }

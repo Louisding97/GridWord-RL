@@ -22,7 +22,6 @@ Miro::Miro(Ai *agent)
 	map[Y_SIZE - 1][X_SIZE - 1] = -2;
 	map[Y_SIZE - 1][X_SIZE - 2] = 3;
 
-	agent = new Ai();
 }
 
 bool Miro::verificationOfLocation()
@@ -90,7 +89,7 @@ int Miro::render()
 			std::cout << std::endl;
 		}*/
 		
-		int res = move(agent->outWay());
+		int res = move(agent->outWay(new XY(m_player_x,m_player_x)));
 		
 		agent->CalCulationReward(getReward(), m_player_x, m_player_y);
 		
